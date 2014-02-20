@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title></title>
+		<script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript">
+		var userName;	
+		function greetUser(){
+			if(navigator.cookieEnabled)
+				userName = readCookie("irock_username");
+			if(userName)
+				alert("Hello, John! I miss you.");
+			else
+				alert ('Hello, I am your Joint.');
+			}
+		function touchRock(){
+			if(userName){
+				alert("I can't trust you! hahaha");
+				}
+			else{
+				userName = prompt("Hello, Joint! Do you miss me?", "Enter Yes or No");
+				if (userName){
+					alert("Are you sure?");
+				if(navigator.cookieEnabled)
+					writeCookie("irock_username",userName,5*365);
+				else
+					alert("Sorry, Cookies aren't supported/ enabled in your browser. I won't remember you later.");
+					}
+				}
+				document.getElementById("rockImg").src = "photo2.JPG";
+				setTimeout("document.getElementById('rockImg').src = 'photo1.JPG';",5*60*1000);
+			}
+		function resizeRock(){
+			document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) *0.9;
+			document.getElementById("rockImg").style.width = (document.body.clientWidth - 100) *0.9;
+		}
+		</script>
+	</head>
+	
+	<body onload="resizeRock(); greetUser();" onresize="resizeRock();">
+		<div style="margin-top:100px; text-align:center">
+			<img id="rockImg" src="photo1.JPG" alt="iRock" style="cursor:pointer" onclick="touchRock();"/>
+		</div>
+		
+	</body>
+</html>
